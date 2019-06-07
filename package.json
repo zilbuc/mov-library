@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
+    "fs": "0.0.1-security",
     "gatsby": "^2.7.1",
     "gatsby-cli": "^2.6.3",
     "gatsby-image": "^2.1.1",
@@ -22,6 +23,9 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {

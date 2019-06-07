@@ -57,7 +57,7 @@ const IconWrapper = styled.div`
   .instagram-icon {
     color: #da5f53;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     display: flex;
     width: 10rem;
     justify-content: space-around;

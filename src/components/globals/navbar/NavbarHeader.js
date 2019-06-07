@@ -38,7 +38,7 @@ const HeaderWrapper = styled.div`
     width: 200px;
     height: auto;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     .toggle-icon {
       display: none;
     }

@@ -14,18 +14,18 @@ class NavbarLinks extends Component {
       },
       {
         id: 1,
-        path: '/about/',
-        name: 'about'
+        path: '/comedies/',
+        name: 'comedy'
       },
       {
         id: 2,
-        path: '/menu/',
-        name: 'menu'
+        path: '/history-movies/',
+        name: 'history'
       },
       {
         id: 3,
-        path: '/contact/',
-        name: 'contact'
+        path: '/horror-movies/',
+        name: 'horror'
       }
     ]
   };
@@ -69,7 +69,7 @@ const LinksWrapper = styled.ul`
       padding-left: 1.3rem;
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     height: auto;
     display: flex;
     margin: 0 auto;

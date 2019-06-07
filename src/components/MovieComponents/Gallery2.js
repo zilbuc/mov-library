@@ -23,7 +23,7 @@ const GET_IMAGES = graphql`
 
 const imageInfo = [ 'Awesome Steak', 'Awesome Pork', 'Awesome Pizza' ];
 
-const Gallery = ({}) => {
+const Gallery = () => {
   return (
     <StaticQuery
       query={GET_IMAGES}
