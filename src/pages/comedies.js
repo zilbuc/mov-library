@@ -1,10 +1,9 @@
 import React, { Component } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { PageHeader, Banner, Section, Title } from '../utils';
-import aboutBcg from '../images/bcg/aboutBcg.jpeg';
+import { PageHeader, Banner } from '../utils';
+import comedyBcg from '../images/bcg/comedyBcg.jpg';
 import MovieGallery from '../components/MovieComponents/MovieGallery';
-
 import { connect } from "react-redux"
 import { getComedies, getMovieDetails, getMovieCredits } from '../state/actions/actions';
 
@@ -21,8 +20,8 @@ class Comedies extends Component {
     const { isPendingComedies, comedies, errorComedies, onGetMovieDetails, onGetMovieCredits } = this.props;
     return (
       <Layout { ...this.props }>
-        <SEO title="Home" />
-        <PageHeader img={aboutBcg}>
+        <SEO title="Comedies" />
+        <PageHeader img={comedyBcg}>
           <Banner title='most popular comedies' subtitle='in 2019'></Banner>
         </PageHeader>
         <MovieGallery

@@ -31,7 +31,7 @@ const MovieWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-column-gap: 1rem;
-  max-width: 90vh;
+  max-width: 90vw;
   .img {
     border-radius: 0.5rem;
     max-width: 300px;

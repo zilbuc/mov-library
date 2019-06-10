@@ -15,9 +15,8 @@ class NavbarHeader extends Component {
         <Link to='/' >
           <img src={logo} alt='company name' />
         </Link>
-        <FaAlignRight className='toggle-icon' onClick={() => handleNavbar() } >
-
-        </FaAlignRight>
+        <FaAlignRight className='toggle-icon' onClick={() => handleNavbar() } />
+        {/* </FaAlignRight> */}
       </HeaderWrapper>
     );
   }

@@ -1,10 +1,9 @@
 import React, { Component } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { PageHeader, Banner, Section, Title } from '../utils';
-import aboutBcg from '../images/bcg/aboutBcg.jpeg';
+import { PageHeader, Banner } from '../utils';
+import historyBcg from '../images/bcg/historyBcg.jpg';
 import MovieGallery from '../components/MovieComponents/MovieGallery';
-
 import { connect } from "react-redux"
 import { getHistoryMovies, getMovieDetails, getMovieCredits } from '../state/actions/actions';
 
@@ -19,8 +18,8 @@ class HistoryMovies extends Component {
     const { isPendingHistoryMovies, historyMovies, errorHistoryMovies, onGetMovieDetails, onGetMovieCredits } = this.props;
     return (
       <Layout { ...this.props }>
-        <SEO title="Home" />
-        <PageHeader img={aboutBcg}>
+        <SEO title="History" />
+        <PageHeader img={historyBcg}>
           <Banner title='most popular history movies' subtitle='in 2019'></Banner>
         </PageHeader>
         <MovieGallery

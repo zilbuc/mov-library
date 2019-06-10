@@ -1,13 +1,25 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import { styles } from '../../utils';
 import { Link } from 'gatsby';
 
-const MovieDetailsComponent = (props) => {
+const MovieDetailsComponent = ({ movieCredits, movieDetails }) => {
 
-  const { movieCredits, movieDetails } = props;
-  const { title, id, poster_path, genres, original_language, release_date, tagline, budget, revenue, overview, vote_average } = movieDetails;
+  const { title, id, poster_path, genres, original_language, release_date, budget, revenue, overview, vote_average } = movieDetails;
   const { cast, crew } = movieCredits;
+  let directors = [];
+  let screenplay = [];
+
+  if (id) {
+    directors = crew.filter(crewMember => crewMember.job === 'Director');
+    screenplay = crew.filter(crewMember => {
+      switch (crewMember.job) {
+        case 'Screenplay': return true;
+        case 'Writer': return true;
+        case 'Novel': return true;
+        default: return false;
+      }
+    });
+  }
 
   return (
     <Fragment>
@@ -18,40 +30,40 @@ const MovieDetailsComponent = (props) => {
               <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt={title} className='poster' />
               <div className='info-section'>
                 <div>
-                  Directed by:
+                  <label>Directed by: </label>
                   {
-                    crew.filter(crew => crew.job === 'Director').map(crew => {
-                      return <h5 key={crew.id}>{crew.name}</h5>
+                    directors.map((crewMember, ind) => {
+                      return <span key={crewMember.id}> {crewMember.name}{ directors.length !== ind + 1 && ', ' }</span>
                       })
                   }
                 </div>
                 <div>
-                  Screenplay by:
+                  <label>Screenplay / Written by: </label>
                   {
-                    crew.filter(crew => crew.job === 'Screenplay').map(crew => {
-                      return <h5 key={crew.id}>{crew.name}</h5>
+                    screenplay.map((crewMember, ind) => {
+                      return <span key={ind}> {crewMember.name}{ screenplay.length !== ind + 1 && ', ' }</span>
                       })
                   }
                 </div>
-                <div>Genres: </div>
+                <div><label>Genres: </label>
                   {
-                    genres.map(genre => {
-                      return <span > {genre.name},</span>
+                    genres.map((genre, ind) => {
+                      return <span key={genre.id}> {genre.name}{ genres.length !== ind + 1 && ', '}</span>
                     })
                   }
-                <div>Language: {original_language}</div>
-                <div>Release date: {release_date}</div>
-                <div>Budget: ${budget}</div>
-                <div>Revenue: ${revenue}</div>
-                <div>Overview: {overview}</div>
-                <div>Average vote: {vote_average}</div>
+                </div>
+                <div><label>Language: </label>{original_language.toUpperCase()}</div>
+                <div><label>Release date: </label>{release_date}</div>
+                <div><label>Budget: </label>{budget.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</div>
+                <div><label>Revenue: </label>{revenue.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</div>
+                <div><label>Overview: </label>{overview}</div>
+                <div><label>Average vote: </label>{vote_average}</div>
               </div>
               <div className='cast-wrapper'>
                 {
                   cast.filter((cast, ind) => ind <= 5).map((cast, ind) => {
                     return (
-                      <div className='cast'>
-                        {/* { ind === 0 && <h3 className='main-cast'>Main cast:</h3> } */}
+                      <div key={ind} className='cast'>
                         <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${cast.profile_path}`} alt={cast.name} className='cast-photo' />
                         <div className='cast-name'><strong>{cast.name}</strong> plays {cast.character}</div>
                       </div>
@@ -66,7 +78,7 @@ const MovieDetailsComponent = (props) => {
 }
 
 const MovieInfoWrapper = styled.div`
-  max-width: 90vh;
+  max-width: 100%;
   .poster {
     width: 100%;
     max-width: 600px;
@@ -74,15 +86,26 @@ const MovieInfoWrapper = styled.div`
     float: left;
   }
   .info-section {
-    max-width: 90vh;
+    max-width: 100%;
     margin: 2rem 0.5rem;
+    font-size: 1.2rem;
+    clear: both;
+  }
+  .info-section div {
+    margin: 0.5rem 0;
+  }
+  label {
+    font-weight: 700;
+    margin: 1rem 0;
   }
   .cast-wrapper {
-    float: left;
     display: grid;
     grid-template-columns: auto;
     grid-column-gap: 1rem;
-    max-width: 90vh;
+    max-width: 100%;
+  }
+  .cast {
+    min-width: 400px;
   }
   .cast-photo {
     border-radius: 0.5rem;
@@ -93,41 +116,19 @@ const MovieInfoWrapper = styled.div`
   .cast-name {
     font-size: 1.2rem;
     margin: 25px 0;
-    ${'' /* display: inline-block; */}
-  }
-  ${'' /* .name {
-    color: ${styles.colors.mainYellow};
-    margin-top: 0.5rem;
-    font-size: 1.35rem;
-  }
-  .vote {
-    font-size: 1.1rem;
-  }
-  .overview {
-    max-height: 150px;
-    overflow: hidden;
-  } */}
-  @media (min-width: 768px) {
   }
   @media (min-width: 992px) {
+    .poster {
+      max-width: 450px;
+    }
+    .info-section {
+      clear: none;
+    }
     .cast-wrapper {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 2fr 2fr;
+      float: left;
     }
   }
-  ${'' /* @media (min-width: 992px) {
-    grid-template-areas:
-      'one one two'
-      'one one three';
-    .poster {
-      grid-area: one;
-    }
-    .item-2 {
-      grid-area: two;
-    }
-    .item-3 {
-      grid-area: three;
-    }
-  } */}
 `;
 
 export default MovieDetailsComponent;

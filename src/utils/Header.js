@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import homeBcg from '../images/bcg/homeBcg.jpeg';
+import homeBcg from '../images/bcg/homeBcg.jpg';
 
 const HomeHeader = ({ img, children }) => {
   return (

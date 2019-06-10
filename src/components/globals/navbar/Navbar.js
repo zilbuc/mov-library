@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
+import { styles } from '../../../utils';
 import NavbarHeader from './NavbarHeader';
 import NavbarLinks from './NavbarLinks';
 import NavbarIcons from './NavbarIcons';
@@ -30,6 +30,11 @@ class Navbar extends Component {
 }
 
 const NavWrapper = styled.nav`
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  background: ${styles.colors.mainWhite};
   @media (min-width: 992px) {
     display: flex;
     align-items: center;

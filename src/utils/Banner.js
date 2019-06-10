@@ -32,8 +32,8 @@ const BannerWrapper = styled.div`
 `;
 
 Banner.defaultProps = {
-  title: 'default title',
-  subtitle: 'default subtitle'
+  title: 'face reality movie library',
+  subtitle: 'your ultimate guide to movies'
 }
 
 export { Banner };

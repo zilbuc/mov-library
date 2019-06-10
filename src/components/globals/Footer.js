@@ -25,13 +25,13 @@ class Footer extends Component {
   render() {
     return (
       <FooterWrapper>
-        <div className='title'>eatery</div>
+        <div className='title'>movie library</div>
         <div className='icons'>
           {this.state.icons.map(icon => {
             return <a key={icon.id} href={icon.path} target='_blank' rel='noopener noreferrer' >{icon.icon}</a>
           })}
         </div>
-        <p className='copyright'>copyright &copy; 2018 face reality eatery</p>
+        <p className='copyright'>copyright &copy; 2019 face reality movie library</p>
       </FooterWrapper>
     );
   }
@@ -63,7 +63,7 @@ const FooterWrapper = styled.footer`
   }
   .title {
     text-align: center;
-    width: 10rem;
+    width: 15rem;
     color: ${styles.colors.mainYellow};
     text-transform: uppercase;
     padding: 0.3rem 1rem;
