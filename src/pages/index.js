@@ -14,7 +14,9 @@ import { searchField, findMovies, getMovieDetails, getMovieCredits } from '../st
 
 class IndexPage extends Component {
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
+    document.querySelector('.search-again').setAttribute('style', 'display: block');
+
     //
     // const details = await getData.getMovieDetails(530);
     // const credits = await getData.getMovieCredits(530);
@@ -44,7 +46,12 @@ class IndexPage extends Component {
 
   onSearchFieldSubmit = (event) => {
     event.preventDefault();
-    this.props.onFindMovies(this.props.searchField);
+    if (this.props.searchField.length === 0) {
+      document.querySelector('.input-error-message').setAttribute('style', 'display: block');
+    } else {
+      this.props.onFindMovies(this.props.searchField);
+      document.querySelector('.input-error-message').setAttribute('style', 'display: none');
+    }
   }
 
   render() {
@@ -53,17 +60,15 @@ class IndexPage extends Component {
       <Layout { ...this.props }>
         <SEO title="Home" />
         <HomeHeader img={homeBcg}>
-          <Banner title='face reality eatery' subtitle='420 main road - Tijuana, Mexico'>
-            <BannerButton style={{ margin: '2rem auto'}}><Link to='/menu/' >menu</Link></BannerButton>
-          </Banner>
+          <Banner title='face reality movie library' subtitle='your ultimate guide to movies' />
         </HomeHeader>
         <SearchBar searchFieldChange={this.onSearchFieldChange} searchFieldSubmit={this.onSearchFieldSubmit}/>
         {/* <QuickInfo />
         <Gallery /> */}
         <MovieGallery
-          movieSearch={movies}
+          movieData={movies}
           movieDataError={errorMovies}
-          movieSearchPending={isPendingMovies}
+          movieDataPending={isPendingMovies}
           onGetMovieDetails={onGetMovieDetails}
           onGetMovieCredits={onGetMovieCredits}
         />

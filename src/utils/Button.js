@@ -5,11 +5,11 @@ const BannerButton = styled.button`
   display: block;
   color: ${styles.colors.mainWhite};
   background: transparent;
-  padding: 0.5rem 1rem;
+  padding: 0.35rem 0.75rem;
   text-transform: uppercase;
-  font-size: 1.5rem;
-  ${styles.letterSpacing({ spacing: '0.5rem' })};
-  font-weight: 700;
+  font-size: 1.2rem;
+  ${styles.letterSpacing({ spacing: '0.35rem' })};
+  font-weight: 500;
   ${styles.border({ color: `${styles.colors.mainWhite}`})};
   margin: 2rem auto 1rem;
   ${styles.transition({})};
@@ -29,7 +29,7 @@ const BannerButton = styled.button`
 
 const SectionButton = styled(BannerButton)`
   color: ${styles.colors.mainBlack};
-  ${styles.border({ color: `${styles.colors.mainBlack}` })};
+  ${styles.border({ width: '0.08rem', color: `${styles.colors.mainBlack}` })};
   &:hover {
     background: ${styles.colors.mainBlack};
     color: ${styles.colors.mainYellow};

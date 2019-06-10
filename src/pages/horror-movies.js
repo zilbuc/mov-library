@@ -3,7 +3,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { PageHeader, Banner, Section, Title } from '../utils';
 import aboutBcg from '../images/bcg/aboutBcg.jpeg';
-// import { QuickInfoWrapper } from '../components/HomePageComponents/QuickInfo';
 import MovieGallery from '../components/MovieComponents/MovieGallery';
 
 import { connect } from "react-redux"
@@ -12,7 +11,10 @@ import { getHorrorMovies, getMovieDetails, getMovieCredits } from '../state/acti
 class HorrorMovies extends Component {
 
   componentDidMount = () => {
-    this.props.onGetHorrorMovies();
+    document.querySelector('.search-again').setAttribute('style', 'display: none');
+    if (!(this.props.horrorMovies.length > 0)) {
+      this.props.onGetHorrorMovies();
+    }
   }
 
   render() {
@@ -21,15 +23,12 @@ class HorrorMovies extends Component {
       <Layout { ...this.props }>
         <SEO title="Home" />
         <PageHeader img={aboutBcg}>
-          <Banner title='about us' subtitle='time to face reality'></Banner>
+          <Banner title='most popular horror movies' subtitle='in 2019'></Banner>
         </PageHeader>
-        {/* <SearchBar searchFieldChange={this.onSearchFieldChange} searchFieldSubmit={this.onSearchFieldSubmit}/> */}
-        {/* <QuickInfo />
-        <Gallery /> */}
         <MovieGallery
-          movieSearch={horrorMovies}
+          movieData={horrorMovies}
           movieDataError={errorHorrorMovies}
-          movieSearchPending={isPendingHorrorMovies}
+          movieDataPending={isPendingHorrorMovies}
           onGetMovieDetails={onGetMovieDetails}
           onGetMovieCredits={onGetMovieCredits}
         />

@@ -3,7 +3,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { PageHeader, Banner, Section, Title } from '../utils';
 import aboutBcg from '../images/bcg/aboutBcg.jpeg';
-// import { QuickInfoWrapper } from '../components/HomePageComponents/QuickInfo';
 import MovieGallery from '../components/MovieComponents/MovieGallery';
 
 import { connect } from "react-redux"
@@ -12,7 +11,8 @@ import { getHistoryMovies, getMovieDetails, getMovieCredits } from '../state/act
 class HistoryMovies extends Component {
 
   componentDidMount = () => {
-    this.props.onGetHistoryMovies();
+    document.querySelector('.search-again').setAttribute('style', 'display: none');
+    !(this.props.historyMovies.length > 0) && this.props.onGetHistoryMovies();
   }
 
   render() {
@@ -21,15 +21,12 @@ class HistoryMovies extends Component {
       <Layout { ...this.props }>
         <SEO title="Home" />
         <PageHeader img={aboutBcg}>
-          <Banner title='about us' subtitle='time to face reality'></Banner>
+          <Banner title='most popular history movies' subtitle='in 2019'></Banner>
         </PageHeader>
-        {/* <SearchBar searchFieldChange={this.onSearchFieldChange} searchFieldSubmit={this.onSearchFieldSubmit}/> */}
-        {/* <QuickInfo />
-        <Gallery /> */}
         <MovieGallery
-          movieSearch={historyMovies}
+          movieData={historyMovies}
           movieDataError={errorHistoryMovies}
-          movieSearchPending={isPendingHistoryMovies}
+          movieDataPending={isPendingHistoryMovies}
           onGetMovieDetails={onGetMovieDetails}
           onGetMovieCredits={onGetMovieCredits}
         />

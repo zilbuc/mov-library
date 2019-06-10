@@ -1,16 +1,20 @@
 import React from 'react';
 import Movie from './Movie';
-import { Section, Title } from '../../utils';
+import { styles, Section } from '../../utils';
 import styled from 'styled-components';
 
-const MovieGallery = ({ movieSearch, movieSearchError, movieSearchPending, onGetMovieDetails, onGetMovieCredits }) => {
+const MovieGallery = ({ movieData, movieDataError, movieSearchPending, onGetMovieDetails, onGetMovieCredits }) => {
 
   return (
     <Section>
-      <Title title='featured items' message='little taste' />
+      <EmptySearch className='search-again'>
+        {
+          movieData.length === 0 && 'Nothing found, please enter a movie and try again!'
+        }
+      </EmptySearch>
       <MovieList>
         {
-          movieSearch.map(movie => {
+          movieData.map(movie => {
             return <Movie key={movie.id} movie={movie} onGetMovieDetails={onGetMovieDetails} onGetMovieCredits={onGetMovieCredits}/>
           })
         }
@@ -35,6 +39,13 @@ const MovieList = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 2rem;
   }
+`;
+
+const EmptySearch = styled.div`
+  font-size: 1.2rem;
+  color: ${styles.colors.mainBlack};
+  text-align: center;
+  margin-top: -35px;
 `;
 
 export default MovieGallery;

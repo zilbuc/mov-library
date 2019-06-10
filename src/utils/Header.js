@@ -19,7 +19,7 @@ const PageHeader = ({ img, children }) => {
 }
 
 const IndexHeader = styled.header`
-  min-height: calc(100vh - 100px);
+  min-height: 40vh;
   background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${props => props.img}) center/cover fixed no-repeat;
   display: flex;
   justify-content: center;
@@ -27,7 +27,7 @@ const IndexHeader = styled.header`
 `;
 
 const DefaultHeader = styled(IndexHeader)`
-  min-height: 60vh;
+  min-height: 30vh;
 `;
 
 HomeHeader.defaultProps = {

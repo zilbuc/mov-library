@@ -44,7 +44,7 @@ class Layout extends React.Component {
 
 const GlobalStyles = createGlobalStyle`
   body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Lato', 'Open Sans', sans-serif;
   }
 `
 

@@ -7,11 +7,11 @@ const SearchBar = ({ searchFieldChange, searchFieldSubmit }) => {
     <Section>
       <form onSubmit={searchFieldSubmit} >
         <SearchField
-          className='pa3 ba b--green bg-lightest-blue'
           type='search'
-          placeholder='search movies'
+          placeholder='enter a movie name'
           onChange={searchFieldChange}
         />
+        <InputMessage className='input-error-message'>Please enter a movie!</InputMessage>
         <SectionButton type='submit'>
           Find movies
         </SectionButton>
@@ -24,15 +24,25 @@ const SearchField = styled.input`
   display: flex;
   margin: 0 auto;
   width: 90%;
-  font-size: 1.2rem;
-  padding: 3px 6px 1px;
+  font-size: 1.3rem;
+  padding: 3px 6px 2px;
   color: ${styles.colors.mainBlack};
+  &:focus {
+    outline-color: ${styles.colors.mainGrey};
+  }
   @media (min-width: 768px) {
     width: 70%;
   }
   @media (min-width: 992px) {
     width: 60%;
   }
+`;
+
+const InputMessage = styled.div`
+  color: red;
+  display: none;
+  font-size: 12px;
+  text-align: center;
 `;
 
 export { SearchBar };
