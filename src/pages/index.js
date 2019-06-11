@@ -11,6 +11,8 @@ class IndexPage extends Component {
 
   componentDidMount = () => {
     document.querySelector('.search-again').setAttribute('style', 'display: block');
+    console.log(process.env.AFI_KEY);
+    console.log(process.env.API_KEY);
   }
 
   onSearchFieldChange = (event) => {

@@ -10,8 +10,8 @@ export const searchField = (text) => {
 
 export const findMovies = (movie) => (dispatch) => {
   dispatch({ type: ACTION_TYPES.FIND_MOVIES_PENDING });
-  // fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&query=${movie}`)
-  fetch(`https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&query=${movie}`)
+  fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&query=${movie}`)
+  // fetch(`https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&query=${movie}`)
     .then(response => response.json())
     .then(data => dispatch({
       type: ACTION_TYPES.FIND_MOVIES_SUCCESS,
@@ -26,6 +26,7 @@ export const findMovies = (movie) => (dispatch) => {
 export const getMovieDetails = (id) => (dispatch) => {
   dispatch({ type: ACTION_TYPES.GET_MOVIE_DETAILS_PENDING });
   fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${ApiKey}&language=en-US`)
+  // fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${ApiKey}&language=en-US`)
     .then(response => response.json())
     .then(data => dispatch({
       type: ACTION_TYPES.GET_MOVIE_DETAILS_SUCCESS,

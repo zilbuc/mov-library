@@ -1,9 +1,8 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
-
+// require("dotenv").config({
+//   path: `.env.${process.env.NODE_ENV}`,
+// });
+//
 module.exports = {
-  // ApiKey: process.env.API_KEY,
   siteMetadata: {
     title: `Face Reality Movie Library`,
     description: `Explore your favorite movies`,
