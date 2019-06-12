@@ -104,9 +104,6 @@ const MovieInfoWrapper = styled.div`
     grid-column-gap: 1rem;
     max-width: 100%;
   }
-  .cast {
-    min-width: 400px;
-  }
   .cast-photo {
     border-radius: 0.5rem;
     max-width: 75px;
@@ -125,7 +122,7 @@ const MovieInfoWrapper = styled.div`
       clear: none;
     }
     .cast-wrapper {
-      grid-template-columns: 2fr 2fr;
+      grid-template-columns: 1fr 1fr;
       float: left;
     }
   }

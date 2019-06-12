@@ -15,7 +15,7 @@ class HistoryMovies extends Component {
   }
 
   render() {
-    const { isPendingHistoryMovies, historyMovies, errorHistoryMovies, onGetMovieDetails, onGetMovieCredits } = this.props;
+    const { isPendingHistoryMovies, historyMovies, errorHistoryMovies, onGetMovieDetails, onGetMovieCredits, selectGenre } = this.props;
     return (
       <Layout { ...this.props }>
         <SEO title="History" />
@@ -28,6 +28,7 @@ class HistoryMovies extends Component {
           movieDataPending={isPendingHistoryMovies}
           onGetMovieDetails={onGetMovieDetails}
           onGetMovieCredits={onGetMovieCredits}
+          selectGenre={selectGenre}
         />
       </Layout>
     )

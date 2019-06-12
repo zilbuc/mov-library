@@ -11,13 +11,11 @@ class HorrorMovies extends Component {
 
   componentDidMount = () => {
     document.querySelector('.search-again').setAttribute('style', 'display: none');
-    if (!(this.props.horrorMovies.length > 0)) {
-      this.props.onGetHorrorMovies();
-    }
+    !(this.props.horrorMovies.length > 0) && this.props.onGetHorrorMovies();
   }
 
   render() {
-    const { isPendingHorrorMovies, horrorMovies, errorHorrorMovies, onGetMovieDetails, onGetMovieCredits } = this.props;
+    const { isPendingHorrorMovies, horrorMovies, errorHorrorMovies, onGetMovieDetails, onGetMovieCredits, selectGenre } = this.props;
     return (
       <Layout { ...this.props }>
         <SEO title="Horror" />
@@ -30,6 +28,7 @@ class HorrorMovies extends Component {
           movieDataPending={isPendingHorrorMovies}
           onGetMovieDetails={onGetMovieDetails}
           onGetMovieCredits={onGetMovieCredits}
+          selectGenre={selectGenre}
         />
       </Layout>
     )

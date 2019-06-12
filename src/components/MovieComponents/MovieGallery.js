@@ -3,18 +3,28 @@ import Movie from './Movie';
 import { styles, Section } from '../../utils';
 import styled from 'styled-components';
 
-const MovieGallery = ({ movieData, movieDataError, movieSearchPending, onGetMovieDetails, onGetMovieCredits }) => {
+const MovieGallery = ({ movieData, movieDataError, movieSearchPending, onGetMovieDetails, onGetMovieCredits, selectGenre }) => {
+
+  let moviesToDisplay = [];
+
+  if (selectGenre !== undefined) {
+    selectGenre.value !== 0
+      ? moviesToDisplay = movieData.filter(movie => movie.genre_ids.some(genre => genre === selectGenre.value))
+      : moviesToDisplay = Object.assign([], movieData)
+  } else {
+    moviesToDisplay = Object.assign([], movieData);
+  }
 
   return (
     <Section>
       <EmptySearch className='search-again'>
         {
-          movieData.length === 0 && 'Nothing found, please enter a movie and try again!'
+          moviesToDisplay.length === 0 && 'Nothing found, please enter a movie and try again!'
         }
       </EmptySearch>
       <MovieList>
         {
-          movieData.map(movie => {
+          moviesToDisplay.map(movie => {
             return <Movie key={movie.id} movie={movie} onGetMovieDetails={onGetMovieDetails} onGetMovieCredits={onGetMovieCredits}/>
           })
         }

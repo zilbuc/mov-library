@@ -11,13 +11,11 @@ class Comedies extends Component {
 
   componentDidMount = () => {
     document.querySelector('.search-again').setAttribute('style', 'display: none');
-    if (!(this.props.comedies.length > 0)) {
-      this.props.onGetComedies();
-    }
+    !(this.props.comedies.length > 0) && this.props.onGetComedies();
   }
 
   render() {
-    const { isPendingComedies, comedies, errorComedies, onGetMovieDetails, onGetMovieCredits } = this.props;
+    const { isPendingComedies, comedies, errorComedies, onGetMovieDetails, onGetMovieCredits, selectGenre } = this.props;
     return (
       <Layout { ...this.props }>
         <SEO title="Comedies" />
@@ -30,6 +28,7 @@ class Comedies extends Component {
           movieDataPending={isPendingComedies}
           onGetMovieDetails={onGetMovieDetails}
           onGetMovieCredits={onGetMovieCredits}
+          selectGenre={selectGenre}
         />
       </Layout>
     )

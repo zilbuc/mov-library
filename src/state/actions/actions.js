@@ -7,6 +7,27 @@ export const searchField = (text) => {
   }
 }
 
+export const selectGenre = (option) => {
+  return {
+    type: ACTION_TYPES.SELECT_GENRE,
+    payload: option
+  }
+}
+
+export const getMovieGenres = () => (dispatch) => {
+  dispatch({ type: ACTION_TYPES.MOVIE_GENRES_PENDING });
+  fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.GATSBY_API_KEY}&language=en-US`)
+    .then(response => response.json())
+    .then(data => dispatch({
+      type: ACTION_TYPES.MOVIE_GENRES_SUCCESS,
+      payload: data.genres
+    }))
+    .catch(err => dispatch({
+      type: ACTION_TYPES.MOVIE_GENRES_FAILURE,
+      payload: err
+    }))
+}
+
 export const findMovies = (movie) => (dispatch) => {
   dispatch({ type: ACTION_TYPES.FIND_MOVIES_PENDING });
   fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.GATSBY_API_KEY}&query=${movie}`)

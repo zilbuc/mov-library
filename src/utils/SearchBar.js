@@ -27,8 +27,9 @@ const SearchField = styled.input`
   font-size: 1.3rem;
   padding: 3px 6px 2px;
   color: ${styles.colors.mainBlack};
-  &:focus {
-    outline-color: ${styles.colors.mainGrey};
+  ${styles.border({ width: '0.08rem', color: `${styles.colors.mainBlack}` })};
+  &:hover, &:focus {
+    outline: none;
   }
   @media (min-width: 768px) {
     width: 70%;
